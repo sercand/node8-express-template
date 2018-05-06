@@ -21,8 +21,13 @@ RUN npm i || :
 WORKDIR /root/
 
 ENV cgi_headers="true"
-
+ENV mode="http"
+ENV upstream_url="http://127.0.0.1:3000"
 ENV fprocess="node index.js"
+
+ENV exec_timeout="20s" 
+ENV write_timeout="25s" 
+ENV read_timeout="25s" 
 
 HEALTHCHECK --interval=1s CMD [ -e /tmp/.lock ] || exit 1
 
